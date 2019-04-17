@@ -9,7 +9,13 @@ class TaskList extends React.Component {
         const list = this.props.tasks.map((task, index) => {
 
             return (
-                <Task key={index + task.id} task={task} onClick={() => this.props.onClick(index)} />
+                <Task
+                    key={index + task.id}
+                    task={task}
+                    onClick={() => this.props.onClick(index)}
+                    handleEdit={() => this.props.handleEdit(index)}
+                    handleDelete={() => this.props.handleDelete(index)}
+                />
             )
         })
 
