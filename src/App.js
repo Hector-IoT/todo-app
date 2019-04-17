@@ -10,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: []
+      tasks: [],
+      currentTask: null
     }
   }
 
@@ -44,16 +45,20 @@ class App extends Component {
 
   }
 
-  taskList(index) {
+  previewTask(index) {
     console.log(index)
+    this.setState({
+      currentTask: this.state.tasks[index]
+    })
   }
 
   render() {
     // console.log(this.state.tasks)
     return (
       <div className="App">
-        <TaskList tasks={this.state.tasks} onClick={(index) => this.taskList(index)} />
-        <TaskPreview />
+        <TaskList tasks={this.state.tasks} onClick={(index) => this.previewTask(index)} />
+        {this.state.currentTask ? <TaskPreview task={this.state.currentTask} /> : null}
+
         <TaskEdit />
         <button onClick={() => this.addTask({ id: '4', title: 'Task 4', Description: 'Description 3', Completed: false })} >Insert</button>
       </div>
