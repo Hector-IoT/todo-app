@@ -112,6 +112,12 @@ class App extends Component {
     });
   }
 
+  closePreview() {
+    this.setState({
+      taskToPreview: null,
+    });
+  }
+
   previewTask(index) {
     const tasks = [...this.state.tasks];
 
@@ -135,6 +141,7 @@ class App extends Component {
         <h2>Task List</h2>
 
         {taskList}
+
         <div
           className={"AddTaskButton"}
           onClick={() => this.createTask()}
@@ -143,9 +150,12 @@ class App extends Component {
         </div>
 
         {this.state.taskToPreview != null ? (
-          <TaskPreview
-            task={this.state.taskToPreview}
-          />
+          <div className="TaskPreview">
+            <TaskPreview
+              task={this.state.taskToPreview}
+              closePreview={() => this.closePreview()}
+            />
+          </div>
         ) : null}
 
         {this.state.taskToCreateOrModify != null ? (
