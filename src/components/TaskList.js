@@ -1,8 +1,8 @@
 import React from 'react';
 import Task from './Task'
+import "../css/TaskListStyle.css";
 
 class TaskList extends React.Component {
-
 
     render() {
 
@@ -10,17 +10,18 @@ class TaskList extends React.Component {
 
             return (
                 <Task
-                    key={index + task.id}
+                    key={Math.random()}
                     task={task}
                     onClick={() => this.props.onClick(index)}
                     handleEdit={() => this.props.handleEdit(index)}
                     handleDelete={() => this.props.handleDelete(index)}
+                    handleCheckboxChange={() => this.props.handleCheckboxChange(index)}
                 />
             )
         })
 
         return (
-            <div>
+            <div className={"TaskList"}>
                 {list}
             </div>
         );

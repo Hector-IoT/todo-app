@@ -1,19 +1,18 @@
 import React from 'react';
+import "../css/TaskPreviewStyle.css";
 
-class TaskPreviw extends React.Component {
-
+class TaskPreview extends React.Component {
 
     render() {
+
         return (
-            <div>
-                {this.props.task.title}
-                {this.props.task.Description}
-                {this.props.task.Completed.toString()}
+            <div >
+                <p className={"TaskPreviewTitle"}>{this.props.task.title}</p>
+                <p className={"TaskPreviewDescription"}>{this.props.task.Description}</p>
+                <p className={"TaskPreviewComplete"}>{this.props.task.Completed ? "Completed" : "No Completed"}</p>
             </div>
         );
     }
 }
 
-export default TaskPreviw;
-
-//{ id: '1', title: 'Task 1', Description: 'Description 1', Completed: true },
+export default TaskPreview;

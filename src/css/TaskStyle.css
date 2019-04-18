@@ -1,0 +1,61 @@
+.Task {
+  width: 40%;
+  margin: 3px auto;
+  border: 2px solid #efe;
+  box-shadow: 0 2px 3px rgb(104, 150, 180);
+  padding: 8px;
+  background-color: rgb(249, 255, 158);
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  border-radius: 10px
+}
+
+.Completed{
+  background-color: rgb(106, 238, 18);
+}
+
+.title {
+  flex: 1;
+  margin: 5px;
+  width: auto;
+  cursor: pointer;
+}
+
+.title:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.actions{
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.CheckBox{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.ButtonEdit {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.ButtonEdit:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.ButtonDelete {
+  cursor: pointer;
+  margin: 5px;
+}
+
+.ButtonDelete:hover {
+  background-color: salmon;
+  color: black;
+} 

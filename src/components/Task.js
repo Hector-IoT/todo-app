@@ -1,37 +1,51 @@
-import React from 'react';
+import React from "react";
+import "../css/TaskStyle.css";
 
 class Task extends React.Component {
-    handleDelete(event) {
-        event.stopPropagation()
-        this.props.handleDelete && this.props.handleDelete()
-    }
+  handleDelete(event) {
+    this.props.handleDelete && this.props.handleDelete();
+  }
 
-    handleEdit(event) {
-        event.stopPropagation()
-        this.props.handleEdit && this.props.handleEdit()
-    }
+  handleEdit(event) {
+    this.props.handleEdit && this.props.handleEdit();
+  }
 
-    handleCheckboxChange() {
+  handleCheckboxChange() {
+    this.props.handleCheckboxChange && this.props.handleCheckboxChange();
+  }
 
-    }
+  handleClick(event) {
+    this.props.onClick();
+  }
 
-    handleClick(event) {
-        event.stopPropagation()
-        this.props.onClick()
-    }
+  render() {
+    let taskStyle = "Task" + (this.props.task.Completed ? " Completed" : "");
 
-    render() {
-        return (
-            <div onClick={(event) => this.handleClick(event)} >
-                <h4 >{this.props.task.title}</h4>
-                <button onClick={(event) => this.handleEdit(event)}>Edit</button>
-                <button onClick={(event) => this.handleDelete(event)}>Delete</button>
-                <input type="checkbox" checked={this.props.task.Completed} onChange={this.handleCheckboxChange} />
-            </ div>
-        );
-    }
+    return (
+      <div className={taskStyle}>
+
+        <h4 className={"title"} onClick={event => this.handleClick(event)}>{this.props.task.title}</h4>
+
+        <div className={"actions"}>
+          <input
+            className={"CheckBox"}
+            type="checkbox"
+            checked={this.props.task.Completed}
+            onChange={event => this.handleCheckboxChange(event)}
+          />
+          <button className={"ButtonEdit"} onClick={event => this.handleEdit(event)}>Edit</button>
+          <button className={"ButtonDelete"} onClick={event => {
+            var r = window.confirm("Are you sure?");
+            if (r === true) {
+              this.handleDelete(event);
+            }
+          }
+          }>Delete</button>
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default Task;
-
-//{id: '1', title: 'Task 1', Description: 'Description 1', Completed: true },
